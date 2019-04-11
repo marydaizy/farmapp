@@ -18,7 +18,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class OfficerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Officer
-        fields = ('username', 'login_id' , 'email', 'district', 'subcounty', 'telephone')
+        fields = ('username', 'email', 'district', 'subcounty', 'telephone')
 
 class FarmerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

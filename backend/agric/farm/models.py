@@ -3,23 +3,11 @@ from django.db import models
 # from django.contrib.auth.models import User
 # Create your models here.
 
-# class Location(models.Model):
-#     id = models.AutoField(primary_key=True)
-#     district = models.CharField(max_length=50, null=True)
-#     parish = models.CharField(max_length=50, null=True)
-#     sub_county = models.CharField(max_length=50, null=True)
-#     farmer = models.ForeignKey('Farmer', on_delete= models.CASCADE, null=True)
-#     class Meta:
-        
-#         ordering = ('district',)
 
-#     def __str__(self):
-#         return self.district+" : "+self.parish+" : "+self.sub_county
 
 class Officer(models.Model):
     id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=50, null=True)
-    login_id =models.CharField(max_length=50, null=True)
     email = models.EmailField()
     password = models.CharField(max_length=20)
     district = models.CharField(max_length=50, null=True)
@@ -33,6 +21,7 @@ class Officer(models.Model):
 
 class Farmer(models.Model):
     id = models.AutoField(primary_key=True)
+    photo = models.FileField(null=True)
     username = models.CharField(max_length=50,null=True)
     district = models.CharField(max_length=30,null=True)
     subcounty = models.CharField(max_length=30,null=True)
@@ -43,7 +32,6 @@ class Farmer(models.Model):
     marriage_status =models.CharField(max_length=20, null=True)
     language = models.CharField(max_length=10,null=True)
     telephone = models.CharField(max_length=15,null=True)
-    photo = models.FileField(null=True)
     community_status = models.TextField(null=True)
     instructor_possibility = models.NullBooleanField(null=True)
     farm_area = models.CharField(max_length=50,null=True)
@@ -97,5 +85,24 @@ class Report(models.Model):
     def __str__(self):
         return self.username
 
+class District(models.Model):
+    name = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return self.name
+
+class Subcounty(models.Model):
+    name = models.CharField(max_length=200, null=True)
+    district = models.ForeignKey('District', on_delete = models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
+
+class Parish(models.Model):
+    name = models.CharField(max_length=200, null=True)
+    sub_county = models.ForeignKey('Subcounty', on_delete= models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
 
 

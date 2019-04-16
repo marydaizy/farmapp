@@ -28,6 +28,10 @@ router.register(r'farmers', views.FarmerViewSet)
 router.register(r'seasons', views.SeasonViewSet)
 router.register(r'reports', views.ReportViewSet)
 
+
+router.register(r'lead', views.LeadViewSet)
+
+
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [

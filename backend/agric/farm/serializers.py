@@ -34,3 +34,17 @@ class ReportSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Report
         fields = '__all__'
+
+
+
+
+
+
+
+# leads ------
+from .models import Lead
+
+class LeadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lead
+        fields = ('id', 'name', 'email', 'message')

@@ -106,3 +106,12 @@ class Parish(models.Model):
         return self.name
 
 
+
+
+
+
+class Lead(models.Model):
+    name = models.CharField(max_length=100, null=True)
+    email = models.EmailField(null=True)
+    message = models.CharField(max_length=300)
+    created_at = models.DateTimeField(auto_now_add=True)

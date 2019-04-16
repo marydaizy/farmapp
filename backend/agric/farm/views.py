@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User, Group
-from .models import Officer, Farmer, Season, Report
+from .models import Officer, Farmer, Season, Report, Lead
 from rest_framework import viewsets
-from farm.serializers import UserSerializer, GroupSerializer, OfficerSerializer, FarmerSerializer, SeasonSerializer, ReportSerializer
+from farm.serializers import UserSerializer, GroupSerializer, OfficerSerializer, FarmerSerializer, SeasonSerializer, ReportSerializer,LeadSerializer
 
 # Create your views here.
 class UserViewSet(viewsets.ModelViewSet):
@@ -47,3 +47,14 @@ class ReportViewSet(viewsets.ModelViewSet):
     """
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
+
+
+
+
+# Lead
+class LeadViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows report to be viewed or edited.
+    """
+    queryset = Lead.objects.all()
+    serializer_class = LeadSerializer

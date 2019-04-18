@@ -6,6 +6,7 @@ from import_export.admin import ImportExportModelAdmin
 # Register your models here.
 # admin.site.register(Officer)
 admin.site.site_header = "JicaPride"
+
 @admin.register(Officer)
 class OfficerAdmin(ImportExportModelAdmin):
     list_display = ('username', 'email', 'district', 'subcounty', 'telephone')
